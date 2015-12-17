@@ -1,0 +1,64 @@
+#!/bin/bash
+
+cd ..
+
+# Environment variables for Dataflow job parameters
+#
+INPUT=`if [ "$1" != "" ] ; then echo $1; else echo input/zvzzt.input.txt; fi`
+OUTPUT=`if [ "$2" != "" ] ; then echo $2; else echo output/zvzzt.output.txt; fi`
+NUM_WORKERS=20
+GB_PER_WORKER=50
+
+# populate with your Google Cloud Platform project name, omit for local execution
+PROJECT=
+
+#populate with your Google Cloud Platform BigQuery details (format is 'dataset:table')
+#omit for local execution
+BQDEST=
+
+# populate with a GCS bucket for Dataflow to store intermediate deployment archives
+# omit for local execution
+# gs://my-gcs-bucket
+STGLOC=gs:// # < -- put in the rest
+
+OUTPUT_TABLE=`if [ "$BQDEST" != "" ]; then echo ${PROJECT}:${BQDEST}; else echo ""; fi`
+JOBFILE=/tmp/dataflow-job-file
+SCALING=BASIC
+JOBNAME=`echo $0 | sed -E 's/\.|\///g'` # strip unfriendly characters
+DATE=`date +%Y%m%d%H%M%S`
+FILE=`echo $1 | cut -f4 -d"/" | cut -f1 -d"."`
+USERNAME=`echo $USER | sed -E 's/\.|\///g'`
+
+JAR=options-transform-0.0.1-SNAPSHOT.jar
+
+JOB="${USERNAME}-${JOBNAME}-${DATE}-${FILE}"
+RUNNER=BlockingDataflowPipelineRunner
+RUNNER=DataflowPipelineRunner # comment out for the launching JVM to stay up through job lifetime
+RUNNER=DirectPipelineRunner # comment out for Cloud Execution
+
+# Set up job params
+#
+PARAMS="${PARAMS} --inputFilePath=$INPUT"
+PARAMS="${PARAMS} --outputFilePath=$OUTPUT"
+PARAMS="${PARAMS} --outputTable=$OUTPUT_TABLE"
+PARAMS="${PARAMS} --project=${PROJECT}"
+PARAMS="${PARAMS} --runner=${RUNNER}"
+PARAMS="${PARAMS} --stagingLocation=${STGLOC}"
+PARAMS="${PARAMS} --dataflowJobFile=${JOBFILE}"
+PARAMS="${PARAMS} --jobName=${JOB}"
+
+# PARAMS="${PARAMS} --numWorkers=${NUM_WORKERS}"
+# PARAMS="${PARAMS} --diskSizeGb=${GB_PER_WORKER}"
+# PARAMS="${PARAMS} --autoscalingAlgorithm=${SCALING}"
+
+echo Starting job $JOB...
+
+java -jar target/${JAR} ${PARAMS}
+
+echo $JOB launcher process finished with exit code $?.
+
+
+
+
+
+
