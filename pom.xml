@@ -10,6 +10,7 @@
   <properties>
     <timestamp>${maven.build.timestamp}</timestamp>
     <maven.build.timestamp.format>yyyy-MM-dd-HH-mm</maven.build.timestamp.format>
+
     <gcp.project>sungard-cat-demo</gcp.project>
     <gcp.stagingLocation>gs://dataflow-staging-test</gcp.stagingLocation>
     <df.jobName>options-symbol-flow-${timestamp}</df.jobName>
@@ -17,13 +18,15 @@
     <df.workerMachineType>n1-standard-4</df.workerMachineType>
     <df.numWorkers>20</df.numWorkers>
     <df.workerDiskSize>50</df.workerDiskSize>
-    <df.bqDest>dataflowpaper.optionsdata</df.bqDest>
-    <df.output>${gcp.project}:${df.bqDest}</df.output>
+    <df.bqDest>dataflow_project.optionsdata</df.bqDest>
+    <df.gsc>gs://pick_a_bucket_name/</df.gsc>
     <df.scalingAlgorithm>BASIC</df.scalingAlgorithm>
     <df.input>${basedir}/input/zvzzt.input.txt</df.input>
-	<!--	<df.input>gs://dataflow-staging-test/zvzzt.input.txt</df.input> -->
-	<df.output>${basedir}/output/zvzzt.output.txt</df.output>
-	<!--    <df.output>${df.bqDest}</df.output> -->
+    	<!-- <df.input>${df.gsc}/zvzzt.input.txt</df.input> -->
+    <df.outputFile>${basedir}/output/zvzzt.output.txt</df.outputFile>
+      <!-- <df.outputFile>${df.gsc}/zvzzt.output.txt</df.outputFile> -->
+    <df.outputTable>${gcp.project}:${df.bqDest}</df.outputTable>
+ 
     <slf4j.version>1.7.7</slf4j.version>
     <logback-classic.version>1.0.1</logback-classic.version>
     <junit.version>4.10</junit.version>
@@ -170,13 +173,13 @@
                 <argument>--project=${gcp.project}</argument>
                 <argument>--stagingLocation=${gcp.stagingLocation}</argument>
                 <argument>--jobName=${df.jobName}</argument>
-                <argument>--dataflowJobFile={df.jobFile}</argument>
+                <argument>--dataflowJobFile=${df.jobFile}</argument>
                 <argument>--autoscalingAlgorithm=${df.scalingAlgorithm}</argument>
                 <argument>--workerMachineType=${df.workerMachineType}</argument>
                 <argument>--diskSizeGb=${df.workerDiskSize}</argument>
                 <argument>--numWorkers=${df.numWorkers}</argument>
                 <argument>--inputFilePath=${df.input}</argument>
-                <argument>--outputFilePath=${df.output}</argument>
+                <argument>--outputFilePath=${df.outputFile}</argument>
               </arguments>
             </configuration>
           </plugin>
@@ -201,13 +204,14 @@
                 <argument>--project=${gcp.project}</argument>
                 <argument>--stagingLocation=${gcp.stagingLocation}</argument>
                 <argument>--jobName=${df.jobName}</argument>
-                <argument>--dataflowJobFile={df.jobFile}</argument>
+                <argument>--dataflowJobFile=${df.jobFile}</argument>
                 <argument>--autoscalingAlgorithm=${df.scalingAlgorithm}</argument>
                 <argument>--workerMachineType=${df.workerMachineType}</argument>
                 <argument>--diskSizeGb=${df.workerDiskSize}</argument>
                 <argument>--numWorkers=${df.numWorkers}</argument>
                 <argument>--inputFilePath=${df.input}</argument>
-                <argument>--outputTable=${df.output}</argument>
+                <argument>--outputTable=${df.outputTable}</argument>
+                  <!-- <argument>- -outputFilePath=${df.outputFile}</argument> -->
               </arguments>
             </configuration>
           </plugin>

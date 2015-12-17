@@ -24,7 +24,7 @@ The example can be run locally either executing:
 
 or by calling Maven with:
 
-```mvn clean install && mvn -Plocal exec:exec```.  
+```mvn clean install && mvn -Plocal exec:exec```.
 
 ## Running the project on Google Cloud Platform / BigQuery
 
@@ -36,25 +36,27 @@ Log your shell into GCP:
 
 If you do not already have a Google Cloud Storage bucket, you can create one with the following command:
 
-```gsutil mb gs://<pick-a-bucket-name>```
+```gsutil mb gs://<pick_a_bucket_name>```
 
 Copy input specimen to Google Cloud Storage:
 
-```gsutil cp input/zvzzt.input.txt gs://<my-gcs-bucket>```
+```gsutil cp input/zvzzt.input.txt gs://<pick_a_bucket_name>```
 
 Ensure that there is a proper destination dataset in your BigQuery account.  For example, this command will create a dataset called dataflow-project within BigQuery for your account:
 
-```bq mk dataflow-project```  
+```bq mk <dataflow_project>```
 
-Execute the following, substituting your own values: 
+Execute the following, substituting your own values `PROJECT` and `BQDEST` in `bin/run`:
 
-```cd bin && ./run gs://<my-gcs-bucket>/zvzzt.input.txt dataflow-project.options```
+```cd bin && ./run gs://<pick_a_bucket_name>/zvzzt.input.txt```
 
 *The Pipeline will automatically create the table if it does not exist, although it cannot create the initial dataset.*
 
 To execute the job upon Google Cloud Platform using Maven, edit the associated values for your project ID and account within `pom.xml` and then run:
 
-```mvn -Pgcp exec:exec```
+```mvn clean install && mvn -Pgcp exec:exec```
+
+Remember that you can not use local files but have to use files stored from/to GCS (`gs://`).
 
 ## Errata
 
@@ -62,9 +64,9 @@ Please open up a GitHub issue for any discrepancies or inconsistencies you may d
 
 ## See Also
 
-* [Dataflow Whitepaper](http://)
+* [Dataflow Whitepaper](http://bit.ly/1NzQiuo)
 * [Bigtable Whitepaper](https://cloud.google.com/bigtable/pdf/ConsolidatedAuditTrail.pdf)
-* [FIS/SunGard](https://fisglobal.com)
+* [FIS/SunGard](https://www.fisglobal.com)
 * [Google Cloud Dataflow](https://cloud.google.com/dataflow/)
 * [Google BigQuery](https://cloud.google.com/bigquery/)
 * [OCC](http://www.optionsclearing.com/)
