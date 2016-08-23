@@ -1,9 +1,13 @@
-Transforming Options Market Data with the Dataflow SDK
+FIS Google Cloud Platform Whitepapers 
 =====
 
 ## About 
 
-In December 2015, FIS released a follow-up whitepaper to May 2015's "Scaling to Build the Consolidated Audit Trail - a financial services application of Google Cloud Bigtable", focusing specifically on Google Cloud Dataflow's programming model and execution environent.  This is the repository associated with that paper, entitled  "Transforming Options Market Data with the Dataflow SDK".
+In December 2015, FIS Advanced Technology released the whitepaper "Transforming Options Market Data with the Dataflow SDK" to provide engineers insight into Google Cloud Dataflow's programming model and execution environent.  
+
+In August of 2016, FIS Advanced Technology produced a sequel to the original 2015 Bigtable whitepaper, detailing the introduction of Google Cloud Dataflow and Google Cloud BigQuery to the Market Reconstruction Tool's solution architecture, as well as to provide a deeper look into the material covered at our [Analyzing 25 billion stock market events in an hour with NoOps on GCP](https://www.youtube.com/watch?v=fqOpaCS117Q) talk from Google NEXT 2016.
+
+Assets referenced in both whitepapers can be found in this repository.
 
 ## Introduction
 
@@ -64,9 +68,10 @@ Please open up a GitHub issue for any discrepancies or inconsistencies you may d
 
 ## See Also
 
-* [Dataflow Whitepaper](http://bit.ly/1NzQiuo)
-* [Bigtable Whitepaper](https://cloud.google.com/bigtable/pdf/ConsolidatedAuditTrail.pdf)
-* [FIS/SunGard](https://www.fisglobal.com)
+* [Market Reconstruction 2.0: A Financial Services Application of Google Cloud Bigtable and Google Cloud Dataflow](http://www.fisglobal.com/Solutions/Institutional-and-Wholesale/Broker-Dealer/-/media/FISGlobal/Files/Whitepaper/A-Financial-Services-Application-of-Google-Cloud-Bigtable-and-Google-Cloud-Dataflow.pdf)
+* [Transforming Options Market Data with the Dataflow SDK](https://cloud.google.com/dataflow/pdf/TransformingOptionsMarketData.pdf)
+* [Scaling to Build the Consolidated Audit Trail: A Financial Services Application of Google Cloug Bigtable](https://cloud.google.com/bigtable/pdf/ConsolidatedAuditTrail.pdf)
+* [FIS Market Reconstruction Tool](http://www.fisglobal.com/Solutions/Institutional-and-Wholesale/Broker-Dealer/Market-Reconstructions-and-Visualization)
 * [Google Cloud Dataflow](https://cloud.google.com/dataflow/)
 * [Google BigQuery](https://cloud.google.com/bigquery/)
 * [OCC](http://www.optionsclearing.com/)
@@ -75,5 +80,5 @@ Please open up a GitHub issue for any discrepancies or inconsistencies you may d
 MIT. See license text in [LICENSE](LICENSE).
 
 ## Copyrights and Names
-Copyright © SunGard 2015. Licensed under the MIT license.
+Copyright © FIS 2016. Licensed under the MIT license.
 
