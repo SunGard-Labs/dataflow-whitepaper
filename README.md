@@ -3,17 +3,22 @@ FIS Google Cloud Platform Whitepapers
 
 ## About 
 
-In December 2015, FIS Advanced Technology released the whitepaper "Transforming Options Market Data with the Dataflow SDK" to provide engineers insight into Google Cloud Dataflow's programming model and execution environent.  
+**Welcome to the source repository for various code references found in several FIS Advanced Technology white papers.**
+
+In December 2015, FIS Advanced Technology released the white paper "Transforming Options Market Data with the Dataflow SDK", to provide software engineers insight into Google Cloud Dataflow's optimal programming model and execution environent.  
 
 In August of 2016, FIS Advanced Technology produced a sequel to the original 2015 Bigtable whitepaper, detailing the introduction of Google Cloud Dataflow and Google Cloud BigQuery to the Market Reconstruction Tool's solution architecture, as well as to provide a deeper look into the material covered at our [Analyzing 25 billion stock market events in an hour with NoOps on GCP](https://www.youtube.com/watch?v=fqOpaCS117Q) talk from Google NEXT 2016.
 
-Assets referenced in both whitepapers can be found in this repository.
+September of 2016 saw the release of "Market Reconstruction 2.0: Visualization at Scale", illustrating the team's experience designing the user interface for a securities transaction regulatory database expected to grow to 35 petabytes over 6 years.
 
-## Introduction
+## White papers
 
-This repository provides the buildable source code referenced within the whitepaper.  It requires Maven, the Google Cloud Platform tools and the Google Cloud Dataflow SDK.
+* [Market Reconstruction 2.0: A Financial Services Application of Google Cloud Bigtable and Google Cloud Dataflow](http://www.fisglobal.com/Solutions/Institutional-and-Wholesale/Broker-Dealer/-/media/FISGlobal/Files/Whitepaper/A-Financial-Services-Application-of-Google-Cloud-Bigtable-and-Google-Cloud-Dataflow.pdf)
+* [Market Reconstruction 2.0: Visualization at Scale ](https://www.fisglobal.com/Solutions/Institutional-and-Wholesale/Broker-Dealer/-/media/FISGlobal/Files/Whitepaper/Market-Reconstruction-2-0-Visualization-at-Scale.pdf)
+* [Transforming Options Market Data with the Dataflow SDK](https://cloud.google.com/dataflow/pdf/TransformingOptionsMarketData.pdf)
+* [Scaling to Build the Consolidated Audit Trail: A Financial Services Application of Google Cloug Bigtable](https://cloud.google.com/bigtable/pdf/ConsolidatedAuditTrail.pdf)
 
-## Running the example project
+## Running the example Dataflow options market data transformaton project
 
 To build the project:
 
@@ -21,14 +26,13 @@ To build the project:
 
 Out of the box, the repository is configured to run a standalone Dataflow job on the local workstation, using input data that ships with the repository (`input/zvzzt.input.txt`).
 
-
 The example can be run locally either executing:
 
 ```cd bin && ./run``` 
 
 or by calling Maven with:
 
-```mvn clean install && mvn -Plocal exec:exec```.
+```mvn clean install && mvn -Plocal exec:exec```
 
 ## Running the project on Google Cloud Platform / BigQuery
 
@@ -68,13 +72,11 @@ Please open up a GitHub issue for any discrepancies or inconsistencies you may d
 
 ## See Also
 
-* [Market Reconstruction 2.0: A Financial Services Application of Google Cloud Bigtable and Google Cloud Dataflow](http://www.fisglobal.com/Solutions/Institutional-and-Wholesale/Broker-Dealer/-/media/FISGlobal/Files/Whitepaper/A-Financial-Services-Application-of-Google-Cloud-Bigtable-and-Google-Cloud-Dataflow.pdf)
-* [Transforming Options Market Data with the Dataflow SDK](https://cloud.google.com/dataflow/pdf/TransformingOptionsMarketData.pdf)
-* [Scaling to Build the Consolidated Audit Trail: A Financial Services Application of Google Cloug Bigtable](https://cloud.google.com/bigtable/pdf/ConsolidatedAuditTrail.pdf)
 * [FIS Market Reconstruction Tool](http://www.fisglobal.com/Solutions/Institutional-and-Wholesale/Broker-Dealer/Market-Reconstructions-and-Visualization)
 * [Google Cloud Dataflow](https://cloud.google.com/dataflow/)
 * [Google BigQuery](https://cloud.google.com/bigquery/)
 * [OCC](http://www.optionsclearing.com/)
+* [Polymer Bootlicker](https://github.com/filaraujo/polymer-bootlicker)
 
 ## License
 MIT. See license text in [LICENSE](LICENSE).
